@@ -53,7 +53,7 @@
                     </ul>
                     <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary ms-lg-2 px-4 py-2 position-relative" href="https://elearning.authenticfarma.com/" target="_blank" style="border-radius:15px;font-weight:600;font-size:0.95rem;">
+                            <a id="btnAcceder" class="btn btn-outline-secondary ms-lg-2 px-4 py-2 position-relative" href="javascript:void(0)" role="button" style="border-radius:15px;font-weight:600;font-size:0.95rem;">
                                 Ingresar
                             </a>
                         </li>
@@ -704,7 +704,7 @@
                     // Mostrar toast informativo
                     if (typeof Toastify !== 'undefined') {
                         Toastify({
-                            text: "🚀 ¡La plataforma estará habilitada desde el 19 de octubre de 2025!",
+                            text: "🚀 ¡La plataforma estará habilitada pronto!",
                             duration: 6000,
                             close: true,
                             gravity: "top",

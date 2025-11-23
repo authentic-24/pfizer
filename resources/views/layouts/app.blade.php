@@ -44,7 +44,7 @@
                     </ul> --}}
                     <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                         <li class="nav-item">
-                            <a class="btn btn-outline-secondary ms-lg-2 px-4 py-2 position-relative" href="https://elearning.authenticfarma.com/" target="_blank" style="border-radius:15px;font-weight:600;font-size:0.95rem;">
+                            <a id="btnAcceder" class="btn btn-outline-secondary ms-lg-2 px-4 py-2 position-relative" href="javascript:void(0)" role="button" style="border-radius:15px;font-weight:600;font-size:0.95rem;">
                                 Ingresar
                             </a>
                         </li>
@@ -307,3 +307,52 @@
             padding: 14px 24px !important;
         }
     </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Handler for layout 'Ingresar' button
+            const btnAccederLayout = document.getElementById('btnAcceder');
+            if (btnAccederLayout) {
+                btnAccederLayout.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (typeof Toastify !== 'undefined') {
+                        Toastify({
+                            text: "🚀 Pronto estará disponible.",
+                            duration: 6000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            backgroundColor: "#28a745",
+                            stopOnFocus: true,
+                            className: "toast-info-fixed",
+                            offset: { x: 20, y: 20 }
+                        }).showToast();
+                    } else {
+                        alert('Pronto estará disponible.');
+                    }
+                });
+            }
+
+            // Intercept any anchors that point to the external platform
+            document.querySelectorAll('a[href*="elearning.authenticfarma.com"]').forEach(function(link) {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (typeof Toastify !== 'undefined') {
+                        Toastify({
+                            text: "🚀 Pronto estará disponible.",
+                            duration: 6000,
+                            close: true,
+                            gravity: "top",
+                            position: "right",
+                            backgroundColor: "#28a745",
+                            stopOnFocus: true,
+                            className: "toast-info-fixed",
+                            offset: { x: 20, y: 20 }
+                        }).showToast();
+                    } else {
+                        alert('Pronto estará disponible.');
+                    }
+                });
+            });
+        });
+    </script>
