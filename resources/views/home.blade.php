@@ -468,7 +468,7 @@
                                     </div>
                                     <h5 class="fw-bold mb-3" style="color:#1e293b;">¿Cuánto tiempo tengo para completar los módulos?</h5>
                                     <p class="text-secondary mb-0" style="line-height:1.6;">
-                                        Puedes avanzar a tu ritmo. La plataforma es flexible y 100% digital, con un límite de tiempo hasta el 1 de diciembre de 2025.
+                                        Puedes avanzar a tu ritmo. La plataforma es flexible y 100% digital.
                                     </p>
                                 </div>
                             </div>
@@ -482,7 +482,7 @@
                                     </div>
                                     <h5 class="fw-bold mb-3" style="color:#1e293b;">¿Necesito tener experiencia previa en sector farmacéutico y dispositivos médicos?</h5>
                                     <p class="text-secondary mb-0" style="line-height:1.6;">
-                                        No, los contenidos están diseñados para todos los niveles, desde estudiantes hasta profesionales con experiencia.
+                                        Si, los contenidos están diseñados para niveles intermedios de conocimiento
                                     </p>
                                 </div>
                             </div>
@@ -496,7 +496,7 @@
                                     </div>
                                     <h5 class="fw-bold mb-3" style="color:#1e293b;">¿Cómo accedo a la plataforma Authentic E-learning?</h5>
                                     <p class="text-secondary mb-0" style="line-height:1.6;">
-                                        Al registrarte, recibirás acceso automático directo y soporte personalizado para comenzar inmediatamente. La plataforma estará abierta después del 15 de octubre de 2025.
+                                        Al registrarte, recibirás acceso automático directo y soporte personalizado para comenzar inmediatamente. 
                                     </p>
                                 </div>
                             </div>
