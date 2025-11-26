@@ -10,7 +10,7 @@
                 <h2 class="h4 fw-bold text-dark mb-2">Diagnóstico de Conocimientos</h2>
                 <p class="text-muted small">Responde las siguientes preguntas para evaluar tu nivel en Excel, Power BI y Power Automate</p>
                 <div class="alert alert-warning" id="timerAlert">
-                    <strong>Tiempo restante: <span id="timer">30:00</span></strong>
+                    <strong>Tiempo restante: <span id="timer">45:00</span></strong>
                 </div>
             </div>
             
@@ -161,7 +161,7 @@ window.onpopstate = function () {
 };
 
 // Timer functionality
-let timeLeft = 30 * 60; // 30 minutes in seconds
+let timeLeft = 45 * 60; // 45 minutes in seconds
 const timerElement = document.getElementById('timer');
 
 function updateTimer() {
@@ -175,8 +175,10 @@ function updateTimer() {
     }
     
     if (timeLeft <= 0) {
-        // Time's up, submit the form
-        document.getElementById('diagnosticForm').submit();
+        // Time's up, mark as submitting and submit the form
+        isSubmitting = true;
+        const form = document.getElementById('diagnosticForm');
+        if (form) form.submit();
     } else {
         timeLeft--;
         setTimeout(updateTimer, 1000);
@@ -186,11 +188,25 @@ function updateTimer() {
 // Start the timer
 updateTimer();
 
-// Warn when trying to leave the page
-window.addEventListener('beforeunload', function (e) {
+// Warn when trying to leave the page, but don't show prompt when the form is submitting
+let isSubmitting = false;
+
+function beforeUnloadHandler(e) {
+    if (isSubmitting) return;
     e.preventDefault();
     e.returnValue = '¿Estás seguro de que quieres salir? El diagnóstico se perderá.';
-});
+}
+
+window.addEventListener('beforeunload', beforeUnloadHandler);
+
+const diagnosticFormEl = document.getElementById('diagnosticForm');
+if (diagnosticFormEl) {
+    diagnosticFormEl.addEventListener('submit', function () {
+        // mark as submitting and remove the handler so the browser won't show the confirmation
+        isSubmitting = true;
+        window.removeEventListener('beforeunload', beforeUnloadHandler);
+    });
+}
 </script>
 
 @endsection

@@ -115,7 +115,7 @@
                                         ¿Qué es <span class="text-dark">Authentic</span> E-Learning?
                                     </h2>
                                     <p class="lead text-dark mb-5 mx-auto" style="max-width:700px;line-height:1.7;font-size:1.1rem;">
-                                        Una plataforma formativa diseñada para profesionales, estudiantes y empresas del sector farmacéutico y dispositivos médicos, con contenido de alto impacto, formación especializada y aprendizaje continuo.
+                                        Formación especializada en análisis de datos para la salud, pensada para fortalecer las competencias técnicas de profesionales y estudiantes —especialmente enfermeras— en el manejo y visualización de información clínica. Aquí aprenderás a interpretar datos y convertirlos en decisiones prácticas que optimicen la gestión de pacientes, eleven la calidad de la atención y mejoren la eficiencia de los servicios de salud mediante herramientas aplicadas y casos prácticos.
                                     
                                     <!-- Cards de beneficios -->
                                     <div class="row g-4 mt-4">
@@ -129,7 +129,7 @@
                                                         </div>
                                                     </div>
                                                     <h5 class="fw-bold mb-2" style="color:#1e293b;">Formación Especializada</h5>
-                                                    <p class="text-secondary small mb-0">En competencias proyectadas para los líderes del año 2030.</p>
+                                                    <p class="text-secondary small mb-0">Fortalecer sus competencias en el análisis de datos de pacientes y mejorar la toma de decisiones en la gestión de la atención médica.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +171,7 @@
                                                         </div>
                                                     </div>
                                                     <h5 class="fw-bold mb-2" style="color:#1e293b;">Certificación</h5>
-                                                    <p class="text-secondary small mb-0">Completa el 100% de los módulos y obtén tu reconocimiento.</p>
+                                                    <p class="text-secondary small mb-0">Completa el 80% de los módulos y obtén tu reconocimiento.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -256,6 +256,23 @@
                                 </div>
                             </div>
 
+                            <!-- Beneficios del programa -->
+                            <div class="row justify-content-center mt-4">
+                                <div class="col-lg-10">
+                                    <div class="card border-0 shadow-lg rounded-4 p-4" style="background: #F8FAFC;backdrop-filter:blur(8px);">
+                                        <div class="card-body">
+                                            <h5 class="fw-bold mb-3">Beneficios del programa</h5>
+                                            <ul class="mb-0" style="list-style:none;padding:0;">
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Optimización en la generación de informes para la gestión de pacientes.</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Mejora en la toma de decisiones basada en datos.</li>
+                                                <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Reducción del tiempo empleado en la consolidación de reportes.</li>
+                                                <li class="mb-0"><i class="bi bi-check-circle-fill text-success me-2"></i>Fomento de una cultura de análisis de datos dentro del equipo de enfermería.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
                             <!-- Información adicional -->
                             {{-- <div class="text-center mt-4">
                                 <p class="text-white-50 small mb-0">
@@ -280,7 +297,7 @@
                 </div>
                 <div class="row justify-content-center g-4">
                     <!-- Angelica M. Santos R. -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class=" text-center h-100 p-4 p-lg-4 rounded-4 position-relative overflow-hidden" style="background: #CFEAD6;backdrop-filter:blur(15px);border:1px solid rgba(0,87,184,0.1);box-shadow:0 8px 40px rgba(0,87,184,0.12);transition:all 0.4s ease;">
                             <div class="team-bg position-absolute top-0 start-0 w-100 h-100" style="background:rgba(248,249,250,0.5);transition:opacity 0.4s ease;"></div>
                             <div class="position-relative z-1">
@@ -311,40 +328,8 @@
                         </div>
                     </div>
 
-                    <!-- Natalia Vergara -->
-                    <div class="col-lg-3 col-md-6">
-                        <div class=" text-center h-100 p-4 p-lg-4 rounded-4 position-relative overflow-hidden" style="background: #CFC8EF;backdrop-filter:blur(15px);border:1px solid rgba(0,87,184,0.1);box-shadow:0 8px 40px rgba(0,87,184,0.12);transition:all 0.4s ease;">
-                            <div class="team-bg position-absolute top-0 start-0 w-100 h-100" style="background:rgba(248,249,250,0.5);transition:opacity 0.4s ease;"></div>
-                            <div class="position-relative z-1">
-                                <div class="mb-3">
-                                    <div class="mentor-photo-container position-relative d-inline-block">
-                                        <img src="/images/mentora Natalia vergara.png" alt="Natalia Vergara" class="mentor-photo rounded-circle border border-success border-opacity-20" style="width:100px;height:100px;object-fit:cover;">
-                                        <div class=" position-absolute top-0 start-0 w-100 h-100 rounded-circle d-flex align-items-center justify-content-center" style="background:rgba(0,168,107,0.1);">
-                                            <i class="bi bi-brain text-success" style="font-size:1.5rem;"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <h5 class="fw-bold mb-2" style="color:#1e293b;font-size:1.1rem;">Natalia Vergara</h5>
-                                {{-- <div class="badge bg-success bg-opacity-10 text-success px-3 py-2 rounded-pill mb-3 fw-semibold" style="font-size:0.75rem;">
-                                    Coach
-                                </div> --}}
-                                <p class="text-secondary small mb-3 lh-base" style="font-size:0.8rem;">
-                                    <strong>Psicóloga</strong> + Especialista en Administración de Empresas
-                                </p>
-                                <p class="text-muted small mb-0" style="font-size:0.8rem;">
-                                    Especialista en desarrollo empresarial y coaching profesional
-                                </p>
-                                <div class="d-flex align-items-center justify-content-center mb-3 mt-2">
-                                    <div class="company-logos-container p-3 rounded-3" style="">
-                                        <img src="/images/logos_empresa_nataalia_sin_fondo.png" alt="Empresas Natalia Vergara" class="img-fluid" style="max-height:145px;max-width:360px;object-fit:contain;filter:brightness(1.1) contrast(1.05);">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                     <!-- Otoniel Fonseca -->
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class=" text-center h-100 p-4 p-lg-4 rounded-4 position-relative overflow-hidden" style="background: #B9DFF7;backdrop-filter:blur(15px);border:1px solid rgba(0,87,184,0.1);box-shadow:0 8px 40px rgba(0,87,184,0.12);transition:all 0.4s ease;">
                             <div class="team-bg position-absolute top-0 start-0 w-100 h-100" style="background:rgba(248,249,250,0.5);transition:opacity 0.4s ease;"></div>
                             <div class="position-relative z-1">
@@ -375,31 +360,31 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-4 col-md-6">
                         <div class=" text-center h-100 p-4 p-lg-4 rounded-4 position-relative overflow-hidden" style="background: #CFEAD6;backdrop-filter:blur(15px);border:1px solid rgba(0,87,184,0.1);box-shadow:0 8px 40px rgba(0,87,184,0.12);transition:all 0.4s ease;">
                             <div class="team-bg position-absolute top-0 start-0 w-100 h-100" style=""></div>
                             <div class="position-relative z-1">
                                 <div class="mb-3">
                                     <div class="mentor-photo-container position-relative d-inline-block">
-                                        <img src="/images/mentora Carolina huertas.png" alt="Carolina Huertas" class="mentor-photo rounded-circle border border-info border-opacity-20" style="width:100px;height:100px;object-fit:cover;transition:all 0.3s ease;">
+                                        <img src="/images/icoperson.png" alt="Carolina Huertas" class="mentor-photo rounded-circle border border-info border-opacity-20" style="width:100px;height:100px;object-fit:cover;transition:all 0.3s ease;">
                                         <div class="photo-overlay position-absolute top-0 start-0 w-100 h-100 rounded-circle d-flex align-items-center justify-content-center" style="background:rgba(13,202,240,0.1);opacity:0;transition:opacity 0.3s ease;">
                                             
                                         </div>
                                     </div>
                                 </div>
-                                <h5 class="fw-bold mb-2" style="color:#1e293b;font-size:1.1rem;">Carolina Huertas</h5>
+                                <h5 class="fw-bold mb-2" style="color:#1e293b;font-size:1.1rem;">Nombre</h5>
                                 {{-- <div class="badge bg-info bg-opacity-10 text-info px-3 py-2 rounded-pill mb-3 fw-semibold" style="font-size:0.75rem;">
                                     Co-Fundador
                                 </div> --}}
                                 <p class="text-secondary small mb-3 lh-base" style="font-size:0.8rem;">
-                                    <strong>Zootecnista + Especialista en Finanzas + Magister en Administración Financiera</strong>
+                                    <strong>Analista de datos + inteligencia de negocios. </strong>
                                 </p>
                                 <p class="text-muted small mb-0" style="font-size:0.8rem;">
-                                    Liderazgo en modelos de negocios sostenibles
+                                    Mentora de power bi y automate
                                 </p>
                                 <div class="d-flex align-items-center justify-content-center mb-3 mt-2">
                                     <div class="company-logos-container p-4 rounded-3" >
-                                        <img src="/images/empresas_carolina_sin_fondo.png" alt="Empresas Carolina Huertas" class="img-fluid" style="max-height:180px;max-width:420px;object-fit:contain;filter:brightness(1.1) contrast(1.05);">
+                                        {{-- <img src="/images/empresas_carolina_sin_fondo.png" alt="Empresas Carolina Huertas" class="img-fluid" style="max-height:180px;max-width:420px;object-fit:contain;filter:brightness(1.1) contrast(1.05);"> --}}
                                     </div>
                                 </div>
                             </div>
@@ -468,7 +453,7 @@
                                     </div>
                                     <h5 class="fw-bold mb-3" style="color:#1e293b;">¿Cuánto tiempo tengo para completar los módulos?</h5>
                                     <p class="text-secondary mb-0" style="line-height:1.6;">
-                                        Puedes avanzar a tu ritmo. La plataforma es flexible y 100% digital.
+                                        Puedes avanzar a tu ritmo. La plataforma es flexible y 100% digital. Se apertura desde el 1 diciembre hasta el 30 de marzo.
                                     </p>
                                 </div>
                             </div>
@@ -480,10 +465,12 @@
                                             <i class="bi bi-book-fill text-success" style="font-size:1.2rem;"></i>
                                         </div>
                                     </div>
-                                    <h5 class="fw-bold mb-3" style="color:#1e293b;">¿Necesito tener experiencia previa en sector farmacéutico y dispositivos médicos?</h5>
-                                    <p class="text-secondary mb-0" style="line-height:1.6;">
-                                        Si, los contenidos están diseñados para niveles intermedios de conocimiento
-                                    </p>
+                                    <h5 class="fw-bold mb-3" style="color:#1e293b;">¿Qué requisitos previos se necesitan?</h5>
+                                    <ul class="text-secondary mb-0" style="line-height:1.6; list-style:none; padding:0;">
+                                        <li class="mb-2">Acceso a las herramientas de software y hardware necesarias (PC con conexión estable).</li>
+                                        <li class="mb-2">Nivel intermedio de Excel.</li>
+                                        <li class="mb-0">Disponibilidad para la capacitación online.</li>
+                                    </ul>
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -527,7 +514,7 @@
                     <div class="col-lg-8">
                         <div class="py-5 px-4">
                             <h2 class="h2 fw-bold  mb-4" style="font-family:'Inter',sans-serif;">
-                                ¿Listo para impulsar tu carrera en farma y desarrollar tus power skills?
+                                ¿Listo para potenciar tus habilidades en análisis de datos y convertir información en resultados clínicos?
                             </h2>
                             
                             <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center align-items-center">

@@ -47,6 +47,21 @@
 
                                 <div class="col-md-6">
                                     <div class="input-group input-line">
+                                        <span class="input-group-text bg-transparent border-0 text-muted"><i class="bi bi-gender-ambiguous"></i></span>
+                                        <select name="genero" id="genero" class="form-select input-line-field" required>
+                                            <option value="">Selecciona el género *</option>
+                                            <option value="Femenino" {{ old('genero') == 'Femenino' ? 'selected' : '' }}>Femenino</option>
+                                            <option value="Masculino" {{ old('genero') == 'Masculino' ? 'selected' : '' }}>Masculino</option>
+                                            <option value="Otros" {{ old('genero') == 'Otros' ? 'selected' : '' }}>Otros</option>
+                                        </select>
+                                    </div>
+                                    @error('genero')
+                                        <div class="text-danger small mt-1">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="input-group input-line">
                                         <span class="input-group-text bg-transparent border-0 text-muted"><i class="bi bi-envelope"></i></span>
                                         <input type="email" name="email" id="email" class="form-control input-line-field" placeholder="Correo electrónico *" value="{{ old('email') }}" required>
                                     </div>

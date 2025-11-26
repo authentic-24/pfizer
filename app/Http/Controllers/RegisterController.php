@@ -18,6 +18,7 @@ class RegisterController extends Controller
         $validatedData = $request->validate([
             'nombre' => 'required|string|max:255',
             'apellido' => 'required|string|max:255',
+            'genero' => 'required|in:Femenino,Masculino,Otros',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8|confirmed',
             'telefono' => 'required|string|max:255',
@@ -38,6 +39,7 @@ class RegisterController extends Controller
             'nombre' => $validatedData['nombre'],
             'apellido' => $validatedData['apellido'],
             'telefono' => $validatedData['telefono'],
+            'genero' => $validatedData['genero'],
             'cargo' => $validatedData['cargo'],
             'institucion' => $validatedData['institucion'],
             'fecha_ingreso' => $validatedData['fecha_ingreso'],
@@ -45,6 +47,6 @@ class RegisterController extends Controller
             'universidad' => $validatedData['universidad'],
         ]);
 
-        return redirect()->route('home');
+        return redirect()->route('home')->with('success', 'Usuario creado exitosamente.');
     }
 }
