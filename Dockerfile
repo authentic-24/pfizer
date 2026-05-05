@@ -1,5 +1,5 @@
 # Etapa 1: construir assets con Node
-FROM node:18 AS build-frontend
+FROM node:20 AS build-frontend
 WORKDIR /app
 COPY package*.json vite.config.* ./
 RUN npm install
