@@ -43,8 +43,8 @@
                         <p class="text-muted">Fecha: {{ now()->format('d/m/Y H:i') }}</p>
                     </div>
                     
-                    <div class="row text-center mb-4 g-3">
-                        <div class="col-md-4 d-flex">
+                    <div class="row justify-content-center text-center mb-4 g-3">
+                        <div class="col-md-6 d-flex">
                             <div class="card border-primary h-100 w-100">
                                 <div class="card-body d-flex flex-column align-items-center justify-content-center">
                                     <h6 class="card-title text-primary">Excel</h6>
@@ -53,44 +53,56 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4 d-flex">
-                            <div class="card border-success h-100 w-100">
-                                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                                    <h6 class="card-title text-success">Power BI</h6>
-                                    <h3 class="text-success">{{ $scores['powerbi'] }}/{{ $totalQuestions['powerbi'] }}</h3>
-                                    <p class="mb-0">{{ number_format(($scores['powerbi'] / $totalQuestions['powerbi']) * 100, 1) }}%</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4 d-flex">
-                            <div class="card border-warning h-100 w-100">
-                                <div class="card-body d-flex flex-column align-items-center justify-content-center">
-                                    <h6 class="card-title text-warning">Power Automate</h6>
-                                    <h3 class="text-warning">{{ $scores['powerautomate'] }}/{{ $totalQuestions['powerautomate'] }}</h3>
-                                    <p class="mb-0">{{ number_format(($scores['powerautomate'] / $totalQuestions['powerautomate']) * 100, 1) }}%</p>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     
                     <div class="text-center mb-4">
-                        <h4>Puntuación Total: {{ $totalScore }}/45</h4>
-                        <p class="text-muted">{{ number_format(($totalScore / 45) * 100, 1) }}% de aciertos</p>
-                        <small class="text-muted d-block mt-2">Nota: La puntuación total representa el porcentaje combinado de aciertos en Excel, Power BI y Power Automate; orienta sobre tu nivel global y las áreas que podrías reforzar.</small>
+                        <h4>Puntuación Total: {{ $totalScore }}/24</h4>
+                        <p class="text-muted">{{ number_format(($totalScore / 24) * 100, 1) }}% de aciertos</p>
+                        <h5 class="mt-2">Nivel obtenido: <span class="text-primary">{{ $excelLevel }}</span></h5>
+                        <small class="text-muted d-block mt-2">La puntuacion refleja tu dominio de Excel en tareas basicas, intermedias y avanzadas.</small>
                     </div>
-                    
-                    <div class="alert alert-info">
-                        <h6>Interpretación de Resultados:</h6>
-                        <ul class="mb-0">
-                            <li><strong>90-100%:</strong> Excede las expectativas del conocimiento</li>
-                            <li><strong>70-89%:</strong> Cumple las expectativas del conocimiento</li>
-                            <li><strong>50-69%:</strong> Conocimiento básico</li>
-                            <li><strong>0-49%:</strong> Necesitas mejorar tus conocimientos</li>
-                        </ul>
+
+                    <div class="card border-0 shadow-sm mb-4" style="background:#f8fafc;">
+                        <div class="card-body">
+                            <h5 class="mb-3">Revision de respuestas</h5>
+                            <p class="text-muted small mb-3">Aqui puedes ver tu respuesta y la respuesta correcta en cada pregunta.</p>
+
+                            <div class="d-grid gap-2">
+                                @foreach($answerDetails as $item)
+                                @php
+                                    $userAnswerLabel = $item['user_answer']
+                                        ? strtolower($item['user_answer']) . ') ' . ($item['options'][strtolower($item['user_answer'])] ?? '')
+                                        : 'Sin respuesta';
+                                    $correctAnswerLabel = strtolower($item['correct_answer']) . ') ' . ($item['options'][strtolower($item['correct_answer'])] ?? '');
+                                @endphp
+
+                                <div class="card border {{ $item['is_correct'] ? 'border-success' : 'border-danger' }}">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-start gap-2 flex-wrap mb-2">
+                                            <h6 class="mb-0">{{ $item['number'] }}. {{ $item['question'] }}</h6>
+                                            @if($item['is_correct'])
+                                            <span class="badge bg-success">Correcta</span>
+                                            @else
+                                            <span class="badge bg-danger">Incorrecta</span>
+                                            @endif
+                                        </div>
+
+                                        <p class="mb-1 small">
+                                            <strong>Tu respuesta:</strong>
+                                            <span class="{{ $item['is_correct'] ? 'text-success' : 'text-danger' }}">{{ $userAnswerLabel }}</span>
+                                        </p>
+                                        <p class="mb-0 small">
+                                            <strong>Respuesta correcta:</strong>
+                                            <span class="text-success">{{ $correctAnswerLabel }}</span>
+                                        </p>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="text-center mt-4 d-flex flex-wrap gap-2 justify-content-center">
-                        <a href="{{ route('diagnostic.index') }}" class="btn btn-primary">Realizar Otro Diagnóstico</a>
                         <a href="{{ route('home') }}" class="btn btn-secondary">Volver al Inicio</a>
                         @if(!$isRegistered)
                         <a href="{{ route('register') }}" class="btn btn-warning fw-semibold">

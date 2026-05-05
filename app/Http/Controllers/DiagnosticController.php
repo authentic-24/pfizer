@@ -21,9 +21,18 @@ class DiagnosticController extends Controller
             'email' => 'required|email',
         ]);
 
-        Session::put('diagnostic_email', $request->email);
+        $email = mb_strtolower(trim($request->email));
+
+        if (DiagnosticResult::where('email', $email)->exists()) {
+            return back()
+                ->withErrors(['email' => 'Este correo ya realizo el diagnostico.'])
+                ->withInput();
+        }
+
+        Session::put('diagnostic_email', $email);
         Session::put('quiz_started', true);
         Session::put('quiz_start_time', now());
+        Session::forget('quiz_option_order');
 
         return redirect()->route('diagnostic.quiz');
     }
@@ -34,8 +43,19 @@ class DiagnosticController extends Controller
             return redirect()->route('diagnostic.index');
         }
 
-        $questions = DiagnosticQuestion::all()->groupBy('category');
-        return view('diagnostic_quiz', compact('questions'));
+        $excelQuestions = DiagnosticQuestion::where('category', 'excel')->orderBy('id')->get();
+
+        $optionOrder = Session::get('quiz_option_order', []);
+        foreach ($excelQuestions as $question) {
+            if (!isset($optionOrder[$question->id])) {
+                $keys = ['a', 'b', 'c', 'd'];
+                shuffle($keys);
+                $optionOrder[$question->id] = $keys;
+            }
+        }
+        Session::put('quiz_option_order', $optionOrder);
+
+        return view('diagnostic_quiz', compact('excelQuestions', 'optionOrder'));
     }
 
     public function submit(Request $request)
@@ -45,29 +65,58 @@ class DiagnosticController extends Controller
         }
 
         $email = Session::get('diagnostic_email');
-        $questions = DiagnosticQuestion::all();
+
+        if (DiagnosticResult::where('email', $email)->exists()) {
+            Session::forget(['diagnostic_email', 'quiz_started', 'quiz_start_time', 'quiz_option_order']);
+
+            return redirect()->route('diagnostic.index')
+                ->withErrors(['email' => 'Este correo ya realizo el diagnostico.'])
+                ->withInput();
+        }
+
+        $questions = DiagnosticQuestion::where('category', 'excel')->orderBy('id')->get();
+        $answerDetails = [];
 
         $scores = [
             'excel' => 0,
-            'powerbi' => 0,
-            'powerautomate' => 0,
         ];
 
         $totalQuestions = [
-            'excel' => 0,
-            'powerbi' => 0,
-            'powerautomate' => 0,
+            'excel' => $questions->count(),
         ];
 
-        foreach ($questions as $question) {
-            $totalQuestions[$question->category]++;
+        foreach ($questions as $index => $question) {
             $answer = $request->input('question_' . $question->id);
-            if ($answer === $question->correct_answer) {
-                $scores[$question->category]++;
+            $isCorrect = $answer === $question->correct_answer;
+
+            if ($isCorrect) {
+                $scores['excel']++;
             }
+
+            $answerDetails[] = [
+                'number' => $index + 1,
+                'question' => $question->question,
+                'user_answer' => $answer,
+                'correct_answer' => $question->correct_answer,
+                'is_correct' => $isCorrect,
+                'options' => [
+                    'a' => $question->option_a,
+                    'b' => $question->option_b,
+                    'c' => $question->option_c,
+                    'd' => $question->option_d,
+                ],
+            ];
         }
 
-        $totalScore = $scores['excel'] + $scores['powerbi'] + $scores['powerautomate'];
+        $totalScore = $scores['excel'];
+
+        if ($totalScore <= 9) {
+            $excelLevel = 'Principiante';
+        } elseif ($totalScore <= 18) {
+            $excelLevel = 'Intermedio';
+        } else {
+            $excelLevel = 'Avanzado';
+        }
 
         // Check if the email belongs to a registered user
         $user = User::where('email', $email)->first();
@@ -76,12 +125,12 @@ class DiagnosticController extends Controller
             'user_id'             => $user?->id,
             'email'               => $email,
             'excel_score'         => $scores['excel'],
-            'powerbi_score'       => $scores['powerbi'],
-            'powerautomate_score' => $scores['powerautomate'],
+            'powerbi_score'       => 0,
+            'powerautomate_score' => 0,
             'total_score'         => $totalScore,
         ]);
 
-        Session::forget(['diagnostic_email', 'quiz_started', 'quiz_start_time']);
+        Session::forget(['diagnostic_email', 'quiz_started', 'quiz_start_time', 'quiz_option_order']);
 
         // If the user is not registered, keep the result ID in session so it can be
         // linked when they register afterwards.
@@ -92,6 +141,6 @@ class DiagnosticController extends Controller
 
         $isRegistered = (bool) $user;
 
-        return view('diagnostic_results', compact('scores', 'totalQuestions', 'totalScore', 'email', 'isRegistered'));
+        return view('diagnostic_results', compact('scores', 'totalQuestions', 'totalScore', 'email', 'isRegistered', 'excelLevel', 'answerDetails'));
     }
 }

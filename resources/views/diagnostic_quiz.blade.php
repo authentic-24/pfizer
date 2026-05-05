@@ -8,9 +8,9 @@
         <div class="col-lg-10 col-md-12">
             <div class="text-center mb-4">
                 <h2 class="h4 fw-bold text-dark mb-2">Diagnóstico de Conocimientos</h2>
-                <p class="text-muted small">Responde las siguientes preguntas para evaluar tu nivel en Excel, Power BI y Power Automate</p>
+                <p class="text-muted small">Responde 24 preguntas para evaluar tu nivel en Excel.</p>
                 <div class="alert alert-warning" id="timerAlert">
-                    <strong>Tiempo restante: <span id="timer">45:00</span></strong>
+                    <strong>Tiempo restante: <span id="timer">25:00</span></strong>
                 </div>
             </div>
             
@@ -19,125 +19,36 @@
                 
                 @php $questionNumber = 1; @endphp
                 
-                @if(isset($questions['excel']))
                 <div class="card mb-4">
                     <div class="card-header bg-primary text-white">
                         <h5 class="mb-0">Excel</h5>
                     </div>
                     <div class="card-body">
-                        @foreach($questions['excel'] as $question)
+                        @foreach($excelQuestions as $question)
+                        @php
+                            $options = [
+                                'a' => $question->option_a,
+                                'b' => $question->option_b,
+                                'c' => $question->option_c,
+                                'd' => $question->option_d,
+                            ];
+                            $orderedKeys = $optionOrder[$question->id] ?? ['a', 'b', 'c', 'd'];
+                        @endphp
                         <div class="mb-4">
                             <p class="fw-medium">{{ $questionNumber }}. {{ $question->question }}</p>
+                            @foreach($orderedKeys as $optionKey)
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_a" value="a" required>
-                                <label class="form-check-label" for="q{{ $question->id }}_a">
-                                    a) {{ $question->option_a }}
+                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_{{ $optionKey }}" value="{{ $optionKey }}" {{ $loop->first ? 'required' : '' }}>
+                                <label class="form-check-label" for="q{{ $question->id }}_{{ $optionKey }}">
+                                    {{ $optionKey }}) {{ $options[$optionKey] }}
                                 </label>
                             </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_b" value="b">
-                                <label class="form-check-label" for="q{{ $question->id }}_b">
-                                    b) {{ $question->option_b }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_c" value="c">
-                                <label class="form-check-label" for="q{{ $question->id }}_c">
-                                    c) {{ $question->option_c }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_d" value="d">
-                                <label class="form-check-label" for="q{{ $question->id }}_d">
-                                    d) {{ $question->option_d }}
-                                </label>
-                            </div>
+                            @endforeach
                         </div>
                         @php $questionNumber++; @endphp
                         @endforeach
                     </div>
                 </div>
-                @endif
-                
-                @if(isset($questions['powerbi']))
-                <div class="card mb-4">
-                    <div class="card-header bg-success text-white">
-                        <h5 class="mb-0">Power BI</h5>
-                    </div>
-                    <div class="card-body">
-                        @foreach($questions['powerbi'] as $question)
-                        <div class="mb-4">
-                            <p class="fw-medium">{{ $questionNumber }}. {{ $question->question }}</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_a" value="a" required>
-                                <label class="form-check-label" for="q{{ $question->id }}_a">
-                                    a) {{ $question->option_a }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_b" value="b">
-                                <label class="form-check-label" for="q{{ $question->id }}_b">
-                                    b) {{ $question->option_b }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_c" value="c">
-                                <label class="form-check-label" for="q{{ $question->id }}_c">
-                                    c) {{ $question->option_c }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_d" value="d">
-                                <label class="form-check-label" for="q{{ $question->id }}_d">
-                                    d) {{ $question->option_d }}
-                                </label>
-                            </div>
-                        </div>
-                        @php $questionNumber++; @endphp
-                        @endforeach
-                    </div>
-                </div>
-                @endif
-                
-                @if(isset($questions['powerautomate']))
-                <div class="card mb-4">
-                    <div class="card-header bg-warning">
-                        <h5 class="mb-0">Power Automate</h5>
-                    </div>
-                    <div class="card-body">
-                        @foreach($questions['powerautomate'] as $question)
-                        <div class="mb-4">
-                            <p class="fw-medium">{{ $questionNumber }}. {{ $question->question }}</p>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_a" value="a" required>
-                                <label class="form-check-label" for="q{{ $question->id }}_a">
-                                    a) {{ $question->option_a }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_b" value="b">
-                                <label class="form-check-label" for="q{{ $question->id }}_b">
-                                    b) {{ $question->option_b }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_c" value="c">
-                                <label class="form-check-label" for="q{{ $question->id }}_c">
-                                    c) {{ $question->option_c }}
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_d" value="d">
-                                <label class="form-check-label" for="q{{ $question->id }}_d">
-                                    d) {{ $question->option_d }}
-                                </label>
-                            </div>
-                        </div>
-                        @php $questionNumber++; @endphp
-                        @endforeach
-                    </div>
-                </div>
-                @endif
                 
                 <div class="card">
                     <div class="card-body">
@@ -161,7 +72,7 @@ window.onpopstate = function () {
 };
 
 // Timer functionality
-let timeLeft = 45 * 60; // 45 minutes in seconds
+let timeLeft = 25 * 60; // 25 minutes in seconds
 const timerElement = document.getElementById('timer');
 
 function updateTimer() {

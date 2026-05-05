@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-body text-center">
                     <h2 class="h4 fw-bold text-dark mb-3">Diagnóstico de Conocimientos</h2>
-                    <p class="text-muted mb-4">Evalúa tu nivel en Excel, Power BI y Power Automate</p>
+                    <p class="text-muted mb-4">Evalua tu nivel en Excel con 24 preguntas (principiante, intermedio y avanzado).</p>
                     
                     <form method="POST" action="{{ route('diagnostic.start') }}">
                         @csrf
@@ -17,7 +17,7 @@
                         <div class="mb-3">
                             <label for="email" class="form-label fw-medium">Correo Electrónico *</label>
                             <input type="email" name="email" id="email" class="form-control" 
-                                   placeholder="tu@email.com" required>
+                                   placeholder="tu@email.com" value="{{ old('email') }}" required>
                             @error('email')
                                 <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
