@@ -15,6 +15,10 @@ Route::get('/policies-data', function () {
     return view('policies-data.index');
 })->name('policies-data.index');
 
+Route::get('/policies-data/manejo-datos', function () {
+    return view('policies-data.manejo-datos');
+})->name('policies-data.manejo-datos');
+
 Route::get('/diagnostic', [DiagnosticController::class, 'index'])->name('diagnostic.index');
 Route::post('/diagnostic/start', [DiagnosticController::class, 'start'])->name('diagnostic.start');
 Route::get('/diagnostic/quiz', [DiagnosticController::class, 'quiz'])->name('diagnostic.quiz');

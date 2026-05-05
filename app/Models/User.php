@@ -28,8 +28,10 @@ class User extends Authenticatable
         'cargo',
         'institucion',
         'fecha_ingreso',
+        'fecha_nacimiento',
         'profesional',
         'universidad',
+        'acepta_obligaciones_pfizer',
     ];
 
     /**
@@ -53,6 +55,8 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
             'fecha_ingreso' => 'date',
+            'fecha_nacimiento' => 'date',
+            'acepta_obligaciones_pfizer' => 'boolean',
         ];
     }
 }

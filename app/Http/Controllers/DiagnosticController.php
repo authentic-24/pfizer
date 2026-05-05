@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\DiagnosticQuestion;
 use App\Models\DiagnosticResult;
+use App\Models\User;
 use Illuminate\Support\Facades\Session;
 
 class DiagnosticController extends Controller
@@ -68,16 +69,29 @@ class DiagnosticController extends Controller
 
         $totalScore = $scores['excel'] + $scores['powerbi'] + $scores['powerautomate'];
 
-        DiagnosticResult::create([
-            'email' => $email,
-            'excel_score' => $scores['excel'],
-            'powerbi_score' => $scores['powerbi'],
+        // Check if the email belongs to a registered user
+        $user = User::where('email', $email)->first();
+
+        $result = DiagnosticResult::create([
+            'user_id'             => $user?->id,
+            'email'               => $email,
+            'excel_score'         => $scores['excel'],
+            'powerbi_score'       => $scores['powerbi'],
             'powerautomate_score' => $scores['powerautomate'],
-            'total_score' => $totalScore,
+            'total_score'         => $totalScore,
         ]);
 
         Session::forget(['diagnostic_email', 'quiz_started', 'quiz_start_time']);
 
-        return view('diagnostic_results', compact('scores', 'totalQuestions', 'totalScore', 'email'));
+        // If the user is not registered, keep the result ID in session so it can be
+        // linked when they register afterwards.
+        if (!$user) {
+            Session::put('pending_diagnostic_result_id', $result->id);
+            Session::put('pending_diagnostic_email', $email);
+        }
+
+        $isRegistered = (bool) $user;
+
+        return view('diagnostic_results', compact('scores', 'totalQuestions', 'totalScore', 'email', 'isRegistered'));
     }
 }

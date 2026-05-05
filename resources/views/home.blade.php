@@ -610,11 +610,6 @@
                                     <i class="bi bi-arrow-right me-2"></i>Contacto
                                 </a>
                             </li>
-                            {{-- <li class="mb-2">
-                                <a href="#" class="text-white-50 text-decoration-none small hover-text-white" style="transition:color 0.3s ease;">
-                                    <i class="bi bi-arrow-right me-2"></i>Blog
-                                </a>
-                            </li> --}}
                         </ul>
                     </div>
                     <div class="col-md-3 mb-4">
@@ -637,7 +632,14 @@
                             <i class="bi bi-geo-alt me-2 text-primary"></i>
                             <span>Colombia</span>
                         </div>
-                        
+
+                        <div class="mt-3">
+                            <a href="/documents/documento.pdf" target="_blank" class="d-flex align-items-start gap-2 text-decoration-none" style="background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:8px;padding:10px 14px;transition:background 0.2s;">
+                                <i class="bi bi-file-earmark-pdf-fill text-danger flex-shrink-0 mt-1" style="font-size:1.2rem;"></i>
+                                <span class="text-white-50 small lh-sm" style="font-size:0.78rem;font-weight:600;letter-spacing:0.2px;">FORMULARIO DE INFORME DE EVENTOS ADVERSOS</span>
+                            </a>
+                        </div>
+
                         <!-- Información del líder Clúster Farma+ CCB -->
                         <hr style="border-color:rgba(255,255,255,0.2); margin: 1rem 0 0.75rem 0;">
                         {{-- <div class="mb-2">
