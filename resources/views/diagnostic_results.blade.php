@@ -71,9 +71,9 @@
                                 @foreach($answerDetails as $item)
                                 @php
                                     $userAnswerLabel = $item['user_answer']
-                                        ? strtolower($item['user_answer']) . ') ' . ($item['options'][strtolower($item['user_answer'])] ?? '')
+                                        ? ($item['options'][strtolower($item['user_answer'])] ?? '')
                                         : 'Sin respuesta';
-                                    $correctAnswerLabel = strtolower($item['correct_answer']) . ') ' . ($item['options'][strtolower($item['correct_answer'])] ?? '');
+                                    $correctAnswerLabel = ($item['options'][strtolower($item['correct_answer'])] ?? '');
                                 @endphp
 
                                 <div class="card border {{ $item['is_correct'] ? 'border-success' : 'border-danger' }}">

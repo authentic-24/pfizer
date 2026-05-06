@@ -40,7 +40,7 @@
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="question_{{ $question->id }}" id="q{{ $question->id }}_{{ $optionKey }}" value="{{ $optionKey }}" {{ $loop->first ? 'required' : '' }}>
                                 <label class="form-check-label" for="q{{ $question->id }}_{{ $optionKey }}">
-                                    {{ $optionKey }}) {{ $options[$optionKey] }}
+                                    {{ $options[$optionKey] }}
                                 </label>
                             </div>
                             @endforeach
