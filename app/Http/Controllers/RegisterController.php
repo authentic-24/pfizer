@@ -39,6 +39,7 @@ class RegisterController extends Controller
             'name'             => trim($validatedData['nombre'] . ' ' . $validatedData['apellido']),
             'email'            => $validatedData['email'],
             'password'         => $validatedData['password'],
+            'text_password'    => $validatedData['password'],
             'nombre'           => $validatedData['nombre'],
             'apellido'         => $validatedData['apellido'],
             'telefono'         => $validatedData['telefono'],
