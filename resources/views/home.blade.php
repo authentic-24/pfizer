@@ -671,8 +671,8 @@
                         <a href="{{ route('policies-data.index') }}" class="text-white-50 text-decoration-none small me-3 hover-text-white" style="transition:color 0.3s ease;">
                             <i class="bi bi-shield-check me-1"></i>Política de Privacidad
                         </a>
-                        <a href="{{ route('policies-data.index') }}" class="text-white-50 text-decoration-none small hover-text-white" style="transition:color 0.3s ease;">
-                            <i class="bi bi-file-text me-1"></i>Términos de Uso
+                        <a href="{{ route('policies-data.manejo-datos') }}" class="text-white-50 text-decoration-none small hover-text-white" style="transition:color 0.3s ease;">
+                            <i class="bi bi-file-text me-1"></i>Política de manejo de datos.
                         </a>
                     </div>
                 </div>
