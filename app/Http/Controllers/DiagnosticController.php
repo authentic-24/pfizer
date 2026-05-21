@@ -128,6 +128,7 @@ class DiagnosticController extends Controller
             'powerbi_score'       => 0,
             'powerautomate_score' => 0,
             'total_score'         => $totalScore,
+            'answer_details'      => $answerDetails,
         ]);
 
         Session::forget(['diagnostic_email', 'quiz_started', 'quiz_start_time', 'quiz_option_order']);

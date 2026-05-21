@@ -16,6 +16,11 @@ class DiagnosticResult extends Model
         'powerbi_score',
         'powerautomate_score',
         'total_score',
+        'answer_details',
+    ];
+
+    protected $casts = [
+        'answer_details' => 'array',
     ];
 
     public function user()
